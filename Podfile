@@ -8,6 +8,7 @@ target 'unsplash' do
   # Pods for unsplash
   pod 'SwiftLint'
   pod 'Kingfisher', '~> 6.3'
+  pod 'Alamofire'
 
 end
 

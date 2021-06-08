@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,8 @@
 		BDDCDDC5266D6AE70030F68A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDDCDDC3266D6AE70030F68A /* Main.storyboard */; };
 		BDDCDDC7266D6AE80030F68A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDDCDDC6266D6AE80030F68A /* Assets.xcassets */; };
 		BDDCDDCA266D6AE80030F68A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDDCDDC8266D6AE80030F68A /* LaunchScreen.storyboard */; };
+		BDDCDDE6266ED96F0030F68A /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDCDDE5266ED96F0030F68A /* APIManager.swift */; };
+		BDDCDDEE266EDDD90030F68A /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDCDDED266EDDD90030F68A /* Image.swift */; };
 		C2BAE4F63B96E91F71B59846 /* Pods_unsplash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA2A7EAF82FDCC2EEDD35AD /* Pods_unsplash.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +29,8 @@
 		BDDCDDC6266D6AE80030F68A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BDDCDDC9266D6AE80030F68A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BDDCDDCB266D6AE80030F68A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BDDCDDE5266ED96F0030F68A /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		BDDCDDED266EDDD90030F68A /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		F01FD2DA13BFFA02240A894E /* Pods-unsplash.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-unsplash.debug.xcconfig"; path = "Target Support Files/Pods-unsplash/Pods-unsplash.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -48,7 +52,6 @@
 				F01FD2DA13BFFA02240A894E /* Pods-unsplash.debug.xcconfig */,
 				81F8E31ECACA813E9C38E899 /* Pods-unsplash.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -80,6 +83,8 @@
 				BDDCDDC6266D6AE80030F68A /* Assets.xcassets */,
 				BDDCDDC8266D6AE80030F68A /* LaunchScreen.storyboard */,
 				BDDCDDCB266D6AE80030F68A /* Info.plist */,
+				BDDCDDE5266ED96F0030F68A /* APIManager.swift */,
+				BDDCDDED266EDDD90030F68A /* Image.swift */,
 			);
 			path = unsplash;
 			sourceTree = "<group>";
@@ -206,9 +211,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDDCDDE6266ED96F0030F68A /* APIManager.swift in Sources */,
 				BDDCDDC2266D6AE70030F68A /* ViewController.swift in Sources */,
 				BDDCDDBE266D6AE70030F68A /* AppDelegate.swift in Sources */,
 				BDDCDDC0266D6AE70030F68A /* SceneDelegate.swift in Sources */,
+				BDDCDDEE266EDDD90030F68A /* Image.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
