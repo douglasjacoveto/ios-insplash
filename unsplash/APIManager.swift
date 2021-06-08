@@ -77,9 +77,40 @@ enum APIManager: URLRequestConvertible {
                 onCompletion([])
             }
             
-            
         }
     }
     
-    
-}
+    static func fetchImages(completionHandler: @escaping ([ImageElement]) -> Void) {
+        let url = URL(string: "https://api.unsplash.com/photos")!
+        
+        var request = URLRequest(url: url)
+        request.addValue("Client-ID un3XJDTs8WwqvnAqTz3JWTfWjbIgKXqVk1bNj7_J8eQ", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+            if let error = error {
+                print("Error with fetching films: \(error)")
+                completionHandler([])
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse,
+                  (200...299).contains(httpResponse.statusCode) else {
+                print("Error with the response, unexpected status code: \(String(describing: response))")
+                completionHandler([])
+                return
+            }
+            
+            do {
+                let json = try JSONDecoder().decode([ImageElement].self, from: data! )
+                completionHandler(json)
+                //print(json)
+            } catch {
+                print("Error during JSON serialization: \(error.localizedDescription)")
+            }
+            
+        })
+        task.resume()
+    }}
+
+
+

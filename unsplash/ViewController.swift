@@ -34,11 +34,17 @@ class ViewController: UIViewController {
     
     @IBAction func didLoadImage(_ sender: Any) {
         
-        APIManager.getAllImages { (images) in
+        APIManager.fetchImages { (images) in
             print(images, images.count)
             let index = Int.random(in: 0..<10)
             self.setImage(linkImage: (images[index].urls.regular))
         }
+        
+//        APIManager.getAllImages { (images) in
+//            print(images, images.count)
+//            let index = Int.random(in: 0..<10)
+//            self.setImage(linkImage: (images[index].urls.regular))
+//        }
         
 //        APIManager.getImage(imageId: "dli0gNKJmE8") { (image) in
 //            print(image!)
