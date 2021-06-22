@@ -10,8 +10,11 @@ import Kingfisher
 
 class ViewController: UIViewController {
     
+    var page: Int = 0
+    
     @IBOutlet weak var imageLoad: UIImageView!
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
@@ -34,7 +37,9 @@ class ViewController: UIViewController {
     
     @IBAction func didLoadImage(_ sender: Any) {
         
-        APIManager.fetchImages { (images) in
+         page += 1
+        
+        APIManager.fetchImages(page: page) { (images) in
             print(images, images.count)
             let index = Int.random(in: 0..<10)
             self.setImage(linkImage: (images[index].urls.regular))

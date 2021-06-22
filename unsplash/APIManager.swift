@@ -12,21 +12,23 @@ enum APIManager: URLRequestConvertible {
     
     static let endpoint = URL(string: "https://api.unsplash.com")!
     
+    static let endpointString: String = "https://api.unsplash.com"
+    
     static let headersRequest: HTTPHeaders? = [
         "Authorization": "Client-ID un3XJDTs8WwqvnAqTz3JWTfWjbIgKXqVk1bNj7_J8eQ",
         "Accept": "application/json"
     ]
     
     case getImage(imageId: String)
-    case getAllImages
+    case getAllImages(page:Int)
     
     var path: String {
         switch self {
         // when you need to pass a parameter to the endpoint
         case .getImage(let imageId):
             return "/photos/\(imageId)"
-        case .getAllImages:
-            return "/photos"
+        case .getAllImages(var page):
+            return "/photos?page=\(page)"
         }
     }
     
@@ -34,7 +36,7 @@ enum APIManager: URLRequestConvertible {
         switch self {
         case .getImage(_):
             return .get
-        case .getAllImages:
+        case .getAllImages(_):
             return .get
         }
     }
@@ -63,8 +65,8 @@ enum APIManager: URLRequestConvertible {
         }
     }
     
-    static func getAllImages(onCompletion: @escaping ([ImageElement]) -> Void) {
-        AF.request(APIManager.getAllImages).validate(statusCode: 200..<300).responseJSON {(json) in
+    static func getAllImages(page: Int,onCompletion: @escaping ([ImageElement]) -> Void) {
+        AF.request(APIManager.getAllImages(page: page)).validate(statusCode: 200..<300).responseJSON {(json) in
             switch json.result {
             case .success:
                 if let jsonData = json.data {
@@ -80,8 +82,9 @@ enum APIManager: URLRequestConvertible {
         }
     }
     
-    static func fetchImages(completionHandler: @escaping ([ImageElement]) -> Void) {
-        let url = URL(string: "https://api.unsplash.com/photos")!
+    static func fetchImages(page: Int, completionHandler: @escaping ([ImageElement]) -> Void) {
+        let urlString = "\(endpointString)/photos?page=" + String(page)
+        let url = URL(string: urlString)!
         
         var request = URLRequest(url: url)
         request.addValue("Client-ID un3XJDTs8WwqvnAqTz3JWTfWjbIgKXqVk1bNj7_J8eQ", forHTTPHeaderField: "Authorization")
